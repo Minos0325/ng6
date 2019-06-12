@@ -1,0 +1,68 @@
+.due-date {
+    background: #ff4f3e;
+    color: #fff;
+}
+
+.drag-start {
+    border: 2px dashed #ff525b;
+    opacity: 0.5;
+}
+
+.completed {
+    opacity: 0.64;
+    color: #d9d9d9;
+    text-decoration: line-through;
+}
+
+.priority-normal {
+    border-left: 3px solid #a6a6a6;
+}
+
+.priority-important {
+    border-left: 3px solid #ffaf38;
+}
+
+.priority-emergency {
+    border-left: 3px solid red;
+}
+
+.completion-status {
+    order: -1;
+}
+
+.alarm {
+    font-size: 18px;
+}
+
+.bottom-bar {
+    margin-top: 3px;
+    margin-bottom: 2px;
+    font-size: 10px;
+    width: 100%;
+    order: 1;
+}
+
+.content {
+    order: 1;
+    width: 100%;
+    padding: 5px;
+}
+
+mat-icon.avatar {
+    order: 3;
+    overflow: hidden;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 12px;
+}
+
+.container {
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+:host {
+    width: 100px;
+}

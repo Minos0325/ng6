@@ -1,0 +1,21 @@
+// angular material 主题支持
+// 多主题及 主题 问题见官网主题文档
+// https://material.angular.io/guide/theming#multiple-themes
+@import '~@angular/material/theming';
+// 引入基础风格
+@include mat-core();
+// 自定义主题
+// 白天
+$my-app-primary: mat-palette($mat-indigo);
+$my-app-accent: mat-palette($mat-pink, A200, A100, A400);
+$my-app-warn: mat-palette($mat-red);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+// 黑夜
+@include angular-material-theme($my-app-theme);
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent: mat-palette($mat-amber, A200, A100, A400);
+$dark-warn: mat-palette($mat-deep-orange);
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+.unicorn-dark-theme {
+    @include angular-material-theme($dark-theme);
+}

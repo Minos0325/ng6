@@ -1,0 +1,49 @@
+<form [formGroup]='form' (ngSubmit)='onsubmit(form, $event)'>
+    <mat-card>
+        <!-- <mat-card-header> -->
+        <mat-card-title>登录:</mat-card-title>
+        <!-- </mat-card-header> -->
+        <mat-card-content>
+            <mat-form-field class="full-width" floatLabel='auto' color='primary' hintLabel='最多10个字'>
+                <!-- <span matPrefix>前缀</span> -->
+                <!-- <mat-icon matPrefix svgIcon="user1"></mat-icon> -->
+                <input 
+                formControlName="email"
+                matInput type="text" placeholder="您的email">
+                <span matSuffix>gmail.com</span>
+                <mat-hint align='end'><span>0</span>/10</mat-hint>
+                <mat-error>{{form.controls['email'].errors | json}}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width" hintLabel='最长12位'>
+                <input 
+                formControlName="password"
+                matInput type="password" placeholder="您的密码">
+                <mat-hint align='end'><span>0</span>/12</mat-hint>
+            </mat-form-field>
+            <button type="submit" mat-raised-button color='primary'
+                [disabled]="!form.valid"
+                
+            >
+                登录
+            </button>
+        </mat-card-content>
+        <mat-card-actions>
+            <p class="text-right">还没有账户？<a [routerLink]='["/register"]'>注册</a></p>
+            <p class="text-right">忘记密码？<a href="#">找回</a></p>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                每日佳句
+            </mat-card-title>
+            <mat-card-subtitle>
+                满足感在于不断的努力，而不是现有的成就，全心努力定会胜利满满。
+            </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="/assets/quote_fallback.jpg" alt="">
+        <mat-card-content>
+            Satisfaction lies in continuous efforts, not in the achievement, Full effort is full victory.
+        </mat-card-content>
+    </mat-card>
+</form>

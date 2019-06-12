@@ -1,0 +1,24 @@
+<mat-nav-list>
+    <h3 matSubheader>项目</h3>
+    <mat-list-item [routerLink]='["/project"]' (click)='onNavClick()'>
+        <mat-icon mat-list-icon svgIcon="projects"></mat-icon>
+        <span matLine>项目首页</span>
+        <span matLine matSubheader>查看您的所有项目</span>
+    </mat-list-item>
+    <h3 matSubheader>日历</h3>
+    <mat-list-item [routerLink]='["/task-home"]' (click)='onNavClick()'>
+        <mat-icon mat-list-icon svgIcon="month"></mat-icon>
+        <span matLine>月视图</span>
+        <span matLine matSubheader>按月查看您的任务</span>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-icon mat-list-icon svgIcon="week"></mat-icon>
+        <span matLine>周视图</span>
+        <span matLine matSubheader>按周查看您的任务</span>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-icon mat-list-icon [svgIcon]="today"></mat-icon>
+        <span matLine>日视图</span>
+        <span matLine matSubheader>按天查看您的任务</span>
+    </mat-list-item>
+</mat-nav-list>

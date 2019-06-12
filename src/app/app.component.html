@@ -1,0 +1,31 @@
+<!-- <mat-sidenav-container>
+    <mat-sidenav-content>
+        <mat-sidenav>
+            <app-sidebar></app-sidebar>
+        </mat-sidenav>
+    </mat-sidenav-content>
+    
+</mat-sidenav-container> -->
+
+<mat-sidenav-container [class.unicorn-dark-theme]='darkTheme'>
+    <mat-sidenav mode="over" position="start" #sidenav1>
+        <app-sidebar (navClick)='sidenav1.close()'></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav mode="over" position="end" #sidenav2>
+        <app-sidebar-r (toggleDarkTheme)='switchTheme($event)'></app-sidebar-r>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="site">
+            <header>
+                <app-header (toggleL)='sidenav1.toggle()' (toggleR)='sidenav2.toggle()'></app-header>
+            </header>
+            <main>
+                <router-outlet></router-outlet>
+
+            </main>
+            <footer>
+                <app-footer></app-footer>
+            </footer>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
