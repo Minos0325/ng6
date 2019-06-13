@@ -1,13 +1,15 @@
 export interface Task {
-    id?: string;
-    desc: string;
-    completed: boolean;
-    priority: number;
-    dueDate?: Date;
-    reminder?: Date;
-    createDate: Date;
-    remark?: string;
-    ownerId?: string;
-    participantIds: string[];
-    taskListId: string;
+  id: string | undefined;
+  taskListId: string;
+  desc: string;
+  completed: boolean;
+  ownerId: string;
+  participantIds: string[];
+  dueDate?: Date;
+  priority: number;
+  // order: number;
+  remark?: string;
+  // tags?: string[];
+  reminder?: Date;
+  createDate?: Date;
 }

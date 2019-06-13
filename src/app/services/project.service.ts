@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Project } from '../domain';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map, mergeMap, count, switchMap, mapTo } from 'rxjs/operators';
+import { Observable, from } from 'rxjs';
 
 @Injectable()
 export class ProjectService {
@@ -10,18 +10,14 @@ export class ProjectService {
     private headers = new HttpHeaders({
         'Content-Type': 'application/json'
     });
-    constructor(private http: HttpClient,
-    @Inject('BASE_CONFIG') private config
-    ) {}
+
+    constructor(private http: HttpClient, @Inject('BASE_CONFIG') private config) {}
     // post 增加元素
     add(project: Project): Observable<Project> {
         const uri = `${this.config.uri}/${this.domain}`;
         project.id = null;
         return this.http
-            .post(uri, JSON.stringify(project), {headers: this.headers})
-            .pipe(
-                map(res => res.json())
-            )
+            .post<Project>(uri, JSON.stringify(project), {headers: this.headers})
     }
     // put 增加元素
     update(project: Project):Observable<Project> {
@@ -32,9 +28,30 @@ export class ProjectService {
             coverImg: project.coverImg
         };
         return this.http
-            .patch(uri, JSON.stringify(toUpdate), {headers: this.headers})
+            .patch<Project>(uri, JSON.stringify(toUpdate), {headers: this.headers})
+    }
+    // delete 删除元素
+    del(project: Project):Observable<Project> {
+        const delTasks$= from(project.taskLists)
             .pipe(
-                map(res => res.json())
-            )
+                mergeMap( 
+                    listId => this.http.delete(`${this.config.uri}/taskLists/${listId}`)
+                ),
+                count()
+            );
+        
+        return delTasks$.pipe(
+            switchMap(
+                _=> this.http.delete(`${this.config.uri}/${this.domain}/${project.id}`)
+            ),
+            mapTo(project)
+        );
+    }
+    // get 取得列表
+    get(userId: string):Observable<Project[]> {
+        const uri = `${this.config.uri}/${this.domain}`;
+        const params = new HttpParams().set('members_like', userId);
+        return this.http
+        .get<Project[]>(uri, {params: params});
     }
 }

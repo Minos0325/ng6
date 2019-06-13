@@ -39,7 +39,7 @@ import 'hammerjs';
     // SharedModule,
   ],
   providers: [
-    {provide: 'BASE_CONFIG', useValue: 'http://location: 3000'},
+    {provide: 'BASE_CONFIG', useValue:{uri: 'http://localhost:3000'}},
     
   ]
 })

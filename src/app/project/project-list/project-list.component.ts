@@ -5,6 +5,8 @@ import { InviteComponent } from '../invite/invite.component';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm.component';
 import { slideToRight } from '../../anims/router.anim';
 import { listAnimation } from '../../anims/list.anim';
+import { Project } from 'src/app/domain';
+import { ProjectService } from 'src/app/services/project.service';
 
 
 @Component({
@@ -15,19 +17,23 @@ import { listAnimation } from '../../anims/list.anim';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectListComponent implements OnInit {
-  projects: any[]=[
-    {id:1, name: '1', desc:'1', coverImg: 'assets/img/covers/0.jpg'},
-    {id:2, name: '2', desc:'2', coverImg: 'assets/img/covers/1.jpg'},
-    // {name: '3', desc:'3', coverImg: 'assets/img/covers/2.jpg'},
-    // {name: '4', desc:'4', coverImg: 'assets/img/covers/3.jpg'}
-  ];
+  projects: Project[];
   constructor(
     private dialog: MatDialog,
-    private cd: ChangeDetectorRef
-    
-    ) { }
+    private cd: ChangeDetectorRef,
+    private service$: ProjectService
+    ) {
+      this.service$.get('BkkDvwee-').subscribe(
+        project => {
+          this.projects = project;
+          console.log(this.projects);
+          this.cd.markForCheck();
+        }
+      )
+     }
   
   ngOnInit() {
+      
   }
   @HostBinding('@routerAnim') state;
   openNewProjectDialog() {
@@ -39,8 +45,8 @@ export class ProjectListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       
-      this.projects= [...this.projects, {id: 3, name: '1新项目', desc: '新项目', coverImg: 'assets/img/covers/0.jpg'}]
-      this.projects= [...this.projects, {id: 4, name: '2新项目', desc: '新项目', coverImg: 'assets/img/covers/0.jpg'}]
+      // this.projects= [...this.projects, {id: 3, name: '1新项目', desc: '新项目', coverImg: 'assets/img/covers/0.jpg'}]
+      // this.projects= [...this.projects, {id: 4, name: '2新项目', desc: '新项目', coverImg: 'assets/img/covers/0.jpg'}]
       
       this.cd.markForCheck();
     });

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, HostBinding, HostListener, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostBinding, HostListener, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { cardAnim } from '../../anims/card.anim';
+import { Project } from 'src/app/domain';
 
 @Component({
   selector: 'app-project-item',
@@ -9,16 +10,17 @@ import { cardAnim } from '../../anims/card.anim';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectItemComponent implements OnInit {
-  @Input() item;
+  @Input() item : Project;
   @Output() onInvite: EventEmitter<void>= new EventEmitter<void>()
   @Output() onEdit: EventEmitter<void>= new EventEmitter<void>()
   @Output() onDel: EventEmitter<void>= new EventEmitter<void>()
 
   @HostBinding('@card') cardState= 'out';
 
-  constructor() { }
+  constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
+    
   }
 
   @HostListener('mouseenter', ['$event.target']) 
