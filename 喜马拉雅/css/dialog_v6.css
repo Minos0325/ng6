@@ -1,0 +1,497 @@
+
+.fle_RS {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: start;
+	    -ms-flex-pack: start;
+			justify-content: flex-start;
+}
+
+.fle_RC {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+.fle_RB {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.fle_RA {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
+}
+.fle_CS {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+}
+.fle_CC {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+.fle_CB {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.fle_CA {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
+}
+/* 弹窗 */
+.tc{
+    box-sizing: border-box;
+    width: 80%;
+    position: fixed;
+    top: 24%;
+    left: 8.8%;
+    z-index: 10;
+    color: #fdedd6;
+    background: #f4fce9;
+    border-radius: 0.1rem;
+    box-shadow: 0 0 0.1rem #f4fce9;
+    padding-bottom: 0.4rem;
+    box-shadow: 0 -0.01rem 0.03rem red, 0 0.02rem 0.04rem rgba(0, 0, 0, 0.5);
+   }
+.tc .know{
+    background: #4EB6E1;
+    color: #fff;
+    line-height: 0.6rem;
+}
+.tc p{
+    font-size: 0.35rem;
+    color: #222;
+    line-height: 1.8;
+    text-indent: 0.25rem;
+    padding: 0.1rem;
+} 
+.tc2 p{
+    text-align: center;
+}
+.hide {
+    display: none;
+    height: 210vh;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+ }
+ .tcDialog {
+ 	display: none;
+ 	position: absolute;
+ 	width: 100%;
+ 	height: 100%;
+ 	top: 0;left: 0;
+ 	background: rgba(0,0,0,0.5);
+ 	z-index: 99999;
+ }
+.tc{
+  padding: 0 0.1rem;
+  overflow: hidden;
+  padding-bottom: 0.2rem;
+  box-shadow: 0 -0.01rem 0.03rem #fff, 0 0.02rem 0.04rem rgba(0, 0, 0, 0.5);
+}
+.tc .icon{
+    width: 100%;
+    height: 0.5rem;
+    margin-top: 0.2rem;
+}
+.tc .close{
+    display: block;
+    width: 8%;
+    height: 0.5rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    float: right;
+}
+.tc .close img{
+    width: 100%;
+    height: 100%;
+}
+.tc>button{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 0.3rem;
+    border: none;
+    outline: none;
+    box-shadow: 0 -0.01rem 0.03rem #fff, 0 0.02rem 0.04rem rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+}
+/*登录弹出框*/
+.phone{
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(25,25,25,0.5);
+    /* background: rgba(25,25,25,0); */
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+.phone_content{
+	border-radius: 0.3rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    /*background: url(../Image/phone_login.png) no-repeat lightblue;*/
+    background: #e5e5e5;
+    background-size: 100%;
+    width: 90%;
+    height: 4.5rem;
+}
+.phone_title {
+	font-weight: bold;
+	font-size: 0.5rem;
+	text-align: center;
+	position: absolute;
+	top: 0.2rem;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.phone-right{
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 1.1rem;
+    
+}
+.phone .phone-right input{
+	box-sizing: border-box;
+	height: 0.7rem;
+	line-height: 0.7rem;
+    width: 100%;
+    font-size: 0.35rem;
+    background: transparent;
+    padding-left: 0.5rem;
+    border: 0.01rem solid #00A0E9;
+    /*border-radius: 0.6rem;*/
+    /*color: #fd7d10;*/
+   	color: #000;
+    outline:none;
+}
+
+.phone-send, .phone-input {
+	position: relative;
+	/*background: rgba(211,232,204,.9);*/
+	margin-bottom: 0.4rem;
+	border-radius: 0.1rem;
+	line-height: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.phone-send-input {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.phone .phone_close{
+    width: 0.4rem;
+    height: 0.4rem;
+    position: absolute;
+    /*left: 50%;
+    transform: translateX(-50%);
+    bottom: -10%;*/
+   	right: 0.2rem;
+   	top: 0.2rem;
+    background: url(../Image/gb.png) no-repeat #00A0E9;
+    /*background: #4EB6E1;*/
+    background-size: 100% 100%;
+    border-radius: 50%;
+}
+
+.phone .phone-right input.phoneno {
+	/*background: url(../Image/gray-phone.png) no-repeat 0.2rem 0.15rem;*/
+	/*background-size: 0.3rem;*/
+}
+.phone .phone-right input.identify {
+	/*background: url(../Image/icon-number.png) no-repeat 0.15rem 0.2rem;*/
+	/*background-size: 0.44rem;*/
+}
+.phone-send {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.send-btn {
+	height: 0.7rem;
+	line-height: 0.7rem;
+	text-align: center;
+	margin: 0 0 0 0.3rem;
+	width: 3.5rem;
+	font-size: 0.3rem;
+	white-space:nowrap;
+	align-self: center;
+	/* background: url(../Image/bg-yan.png) no-repeat center; */
+    background: no-repeat #00A0E9;;
+	background-size: 100% 100% !important;
+	background-position-y: 0.02rem !important;
+	color: #FFFCF2;
+}
+.phone_determine {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	text-align: center; 
+}
+.phone_determine button{
+	font-size: 0.4rem;
+	word-spacing: 0.6rem;
+	display: block;
+	width: 2.3rem;
+	height: 0.8rem;
+	line-break: 0.6rem;
+	color: #fff;
+	font-weight: 400;
+	border-radius: 0.1rem;
+	border: none;
+    background: #00A0E9;;
+	background-size: 100% 100%;
+	margin-bottom: 0;
+}
+
+.tip {
+    z-index: 9999;
+    position: fixed;
+    top: 42vh;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+.tip span {
+    display: inline-block;
+    max-width: 90%;
+    margin: auto;
+    font-size: 0.38rem;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 0.2rem;
+    padding: 0.26rem 0.4rem;
+    text-align: center;
+    overflow: hidden;
+    word-break: break-all;
+    word-wrap: break-word;
+    line-height: .56rem;
+}
+
+.alertBox,.PrizeBox,.confirmBox, .confirmBox2, .ruleBox, .toPhoneBox {
+	box-sizing: border-box;
+	font-size: 0.28rem ;
+	width: 100%;
+	height: 100%;
+	background: rgba(25,25,25,0.5);position: fixed;left: 0;top: 0;z-index: 200;
+}
+.alertSelf, .confirmSelf, .confirm2Self, .ruleSelf, .toPhoneSelf{
+	text-align: center;
+	border-radius: 0.1rem;
+	box-sizing: border-box;
+	width:90%;
+	position: absolute;
+	top: 50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	/*background: #a7c5de;*/
+	
+	background: #fff;
+	min-height: 2rem;
+	padding: 0.3rem;
+	border: 0.02rem solid #00A0E9;
+}
+.confirm2TitleImg {
+	width: 100%;
+}
+.confirm2Self {
+	padding: 0 0 0.5rem 0;
+	/* background: url(../Image/bg-gray.png) no-repeat 0 0 #fff; */
+	background-size: 100%; 
+}
+.alertSelf {
+	/*background: url(../Image/border_bg.png) no-repeat red;*/
+	background-size: 100%;
+}
+.alertText , .confirmText, .confirm2Text, .ruleText, .toPhoneText{
+	box-sizing: border-box;
+	word-break:break-all;
+	width: 100%;
+	text-align: center;
+	margin: 0.3rem auto 0.4rem;
+	padding: 0 0.2rem;
+	font-size: 0.3rem;
+	line-height: 0.5rem;
+}
+.confirm2Text {
+	margin: 0 auto 0.3rem;
+	padding-top: 0.4rem;
+	padding-left: 0.5rem;
+}
+.toPhoneText {
+	font-size: 0.4rem;
+	font-weight: bold;
+}
+.ruleText {
+	max-height: 6rem;
+	overflow-y: auto;
+}
+.animeRule {
+	animation: animeRule 1s forwards;
+}
+.confirmBtnT, .confirmBtnF{
+	width: 30%;
+	text-align: center;
+	font-size: 0.3rem;
+	padding: .12rem 0.2rem;
+	border: none;
+	/*background: #4EB6E1;*/
+	border-radius: 1rem;
+	color: #fff;
+}
+.confirmBtnT {
+	background: -webkit-linear-gradient(#00A0E9, #00A0E9);
+	background: -moz-linear-gradient(#00A0E9, #00A0E9);
+	background: -o-linear-gradient(#00A0E9, #00A0E9);
+	background: linear-gradient(#00A0E9, #00A0E9); /* 标准的语法 */
+}
+.confirmBtnF {
+	background: #aaa !important; 
+	
+	/*background: -webkit-linear-gradient(#00F2FE, #4FACFE);
+	background: -moz-linear-gradient(#00F2FE, #4FACFE);
+	background: -o-linear-gradient(#00F2FE, #4FACFE);
+	background: linear-gradient(#00F2FE, #4FACFE); /* 标准的语法 */
+}
+.confirmText {
+	margin-bottom: 0.35rem;
+}
+.confirmText p {
+	/*font-size: 0.25rem;*/
+	margin: 0.1rem 0;
+}
+
+.confirm2Text p {
+	/*font-size: 0.25rem;*/
+	margin: 0.1rem 0;
+}
+.alertBtn, .closeListBtn, .RuleBtn, .toPhoneBtn{
+	border: none;
+	width: 70%;
+	/*border-radius: 0.1rem;*/
+	border-radius: 1rem;
+	height: 0.6rem;
+	text-align: center;
+	font-size: 0.35rem;
+	line-height: 0.6rem;
+	/*background: #4EB6E1;*/
+	
+	background: -webkit-linear-gradient(#00F2FE, #4FACFE);
+	background: -moz-linear-gradient(#00F2FE, #4FACFE);
+	background: -o-linear-gradient(#00F2FE, #4FACFE);
+	background: linear-gradient(#00F2FE, #4FACFE); /* 标准的语法 */
+
+	font-weight: bolder;
+	color: #fff;
+}
+.toXIcon {
+	width: 0.4rem;
+	height: 0.4rem;	
+	position: absolute;
+	right: 0.1rem;
+	top: 0.1rem;
+	border-radius: 50%;
+	background: #00A0E9;
+	/* transform: rotate(-45deg);
+	border-top: 0.05rem solid #4EB6E1;
+	border-right: 0.05rem solid #4EB6E1;
+	border-bottom: 0.05rem solid #4EB6E1;
+	border-left: 0.05rem solid transparent; */
+}
+.alertBtn {
+	width: 2.3rem;
+	height: 0.6rem;
+	/*background: url(../img/qd.png) no-repeat blue;*/
+	background: #00A0E9;
+	background-size: 100% 100%;
+}
+.alertBtn img {
+	width: 0.7rem;
+}
+
+/*.login img {
+	width: 100%;
+}*/
+
+.overF {
+    overflow: hidden;
+    height: 100%;
+}
+
+
+@keyframes animeRule {
+	from {
+		height: 0;
+	}
+	to {
+		height: 4rem;
+	}
+}
