@@ -18,7 +18,7 @@ export class AppComponent {
     
     this.darkTheme? 
     this.oc.getContainerElement().classList.add('unicorn-dark-theme'):
-    null;
+    this.oc.getContainerElement().classList.remove('unicorn-dark-theme');
   }
   constructor(
     private oc: OverlayContainer,

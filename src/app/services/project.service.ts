@@ -32,7 +32,7 @@ export class ProjectService {
     }
     // delete 删除元素
     del(project: Project):Observable<Project> {
-        const delTasks$= from(project.taskLists)
+        const delTasks$= from(project.taskLists?project.taskLists: [] )
             .pipe(
                 mergeMap( 
                     listId => this.http.delete(`${this.config.uri}/taskLists/${listId}`)

@@ -1,10 +1,12 @@
-import { Component, OnInit, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { NewTaskComponent } from '../new-task/new-task.component';
 import { CopyTaskComponent } from '../copy-task/copy-task.component';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm.component';
 import { NewTaskListComponent } from '../new-task-list/new-task-list.component';
 import { slideToRight } from '../../anims/router.anim';
+import { TaskList } from 'src/app/domain';
+import { TaskListService } from 'src/app/services/task-list.service';
 
 
 @Component({
@@ -15,77 +17,19 @@ import { slideToRight } from '../../anims/router.anim';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskHomeComponent implements OnInit {
-  lists = [
-    {
-      id: 1,
-      name: '待办',
-      order: 1,
-      tasks: [
-        {
-          id: 1,
-          desc: '任务一：去星巴克买咖啡',
-          completed: true,
-          priority: 3,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatars:svg-11'
-          },
-          dueDate: new Date(),
-          reminder: new Date()
-        },
-        {
-          id: 2,
-          desc: '任务二：完成老板布置的PPT作业',
-          completed: false,
-          priority: 2,
-          owner: {
-            id: 1,
-            name: '李四',
-            avatar: 'avatars:svg-12'
-          },
-          dueDate: new Date(),
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: '进行中',
-      order: 2,
-      tasks: [
-        {
-          id: 1,
-          desc: '任务三：项目代码评审',
-          completed: false,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '王五',
-            avatar: 'avatars:svg-13'
-          },
-          dueDate: new Date(),
-        },
-        {
-          id: 2,
-          desc: '任务四：制定项目计划',
-          completed: false,
-          priority: 2,
-          // owner: {
-          //   id: 1,
-          //   name: '李四',
-          //   avatar: 'avatars:svg-12'
-          // },
-          dueDate: new Date(),
-        }
-      ]
-    }
-  ]
+  lists: TaskList[] = [];
+  @Input() projectId = 'Hya1moGb-';
   constructor(
     private dialog: MatDialog,
+    private tasklistService: TaskListService,
     private cd: ChangeDetectorRef,
     ) { }
 
   ngOnInit() {
+    this.tasklistService.get(this.projectId).subscribe( _=> {
+      this.lists = _;
+      this.cd.markForCheck();
+    })
   }
   @HostBinding('@routerAnim') state;
   launchNewTaskDialog() {

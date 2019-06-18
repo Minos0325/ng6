@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { NewProjectComponent } from '../new-project/new-project.component';
 import { InviteComponent } from '../invite/invite.component';
@@ -7,7 +7,9 @@ import { slideToRight } from '../../anims/router.anim';
 import { listAnimation } from '../../anims/list.anim';
 import { Project } from 'src/app/domain';
 import { ProjectService } from 'src/app/services/project.service';
-
+import * as _ from 'lodash';
+import { filter, switchMap, map, take } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-project-list',
@@ -16,38 +18,50 @@ import { ProjectService } from 'src/app/services/project.service';
   animations: [slideToRight, listAnimation],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProjectListComponent implements OnInit {
-  projects: Project[];
+export class ProjectListComponent implements OnInit, OnDestroy {
+  projects: Project[]=[];
+  sub: Subscription;
   constructor(
     private dialog: MatDialog,
     private cd: ChangeDetectorRef,
     private service$: ProjectService
     ) {
-      this.service$.get('BkkDvwee-').subscribe(
-        project => {
-          this.projects = project;
-          console.log(this.projects);
-          this.cd.markForCheck();
-        }
-      )
+      
      }
   
   ngOnInit() {
-      
+    this.sub = this.service$.get('BkkDvwee-').subscribe(
+      project => {
+        this.projects = project;
+        console.log(this.projects);
+        this.cd.markForCheck();
+      }
+    )
+  }
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
   }
   @HostBinding('@routerAnim') state;
   openNewProjectDialog() {
+    const selectedImg = `/assets/img/covers/${Math.floor(Math.random()*40)}_tn.jpg`;
     const dialogRef = this.dialog.open(NewProjectComponent, {
       data: {
-          title: '新增项目',
+        thumbnails: this.getThumbnails(),
+        img: selectedImg
       }
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      
-      // this.projects= [...this.projects, {id: 3, name: '1新项目', desc: '新项目', coverImg: 'assets/img/covers/0.jpg'}]
-      // this.projects= [...this.projects, {id: 4, name: '2新项目', desc: '新项目', coverImg: 'assets/img/covers/0.jpg'}]
-      
+    dialogRef.afterClosed()
+    .pipe(
+      take(1),
+      filter(v=> v),
+      map(val => ({...val, coverImg: this.buildImgSrc(val.coverImg)})),
+      switchMap(v=> this.service$.add(v))
+    )
+    .subscribe(project => {
+      console.log(project);
+      this.projects = [...this.projects, project];
       this.cd.markForCheck();
     });
   }
@@ -56,12 +70,30 @@ export class ProjectListComponent implements OnInit {
     this.dialog.open(InviteComponent);
     console.log(project);
   }
-  launchUpdateDialog() {
+  launchUpdateDialog(project: Project) {
     const dialogRef = this.dialog.open(NewProjectComponent, {
       data: {
-        title: '编辑项目',
+        thumbnails: this.getThumbnails(),
+        project: project
       }
-    })
+    });
+    dialogRef.afterClosed()
+    .pipe(
+      take(1),
+      filter(v=> v),
+      map(val => ({...val, 
+        coverImg: this.buildImgSrc(val.coverImg),
+        id: project.id
+      })),
+      switchMap(v=> this.service$.update(v))
+    )
+    .subscribe(project => {
+      const index = this.projects.map(p=> p.id).indexOf(project.id);
+      this.projects = [
+        ...this.projects.slice(0, index), project, ...this.projects.slice(index+1)
+      ];
+      this.cd.markForCheck();
+    });
   }
   launchConfirmDialog(project) {
     
@@ -71,9 +103,24 @@ export class ProjectListComponent implements OnInit {
         content: '您确认删除该项目吗？'
       }
     })
-    dialogRef.afterClosed().subscribe(v=> {
-      this.projects = this.projects.filter(v => v.id !== project.id)
+    dialogRef.afterClosed()
+    .pipe(
+      take(1),
+      filter(v=> v),
+      switchMap(_ => this.service$.del(project))
+    )
+    .subscribe(prj => {
+      const index = this.projects.map(p=> p.id).indexOf(prj.id);
+      this.projects = this.projects.filter(p=> p.id !== prj.id);
       this.cd.markForCheck();
     });
+  }
+
+  private getThumbnails() {
+    return _.range(0,40)
+      .map(i =>`/assets/img/covers/${i}_tn.jpg`);
+  }
+  private buildImgSrc(img: string): string {
+    return img.indexOf('_')>-1? img.split('_',1)[0]+'.jpg': img;
   }
 }
