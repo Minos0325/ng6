@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import 'hammerjs';
 
+// import '../utils/debug.utils';
+
 @NgModule({
   declarations: [
     HeaderComponent,
