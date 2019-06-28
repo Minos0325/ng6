@@ -28,10 +28,11 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm.component';
 import { DirectiveModule } from '../directive/directive.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
+import { AgeInputComponent } from './age-input/age-input.component';
 
 
 @NgModule({
-  declarations: [ConfirmDialogComponent, ImageListSelectComponent],
+  declarations: [ConfirmDialogComponent, ImageListSelectComponent, AgeInputComponent],
   entryComponents: [ ConfirmDialogComponent ],
   imports: [
     CommonModule,
@@ -67,6 +68,8 @@ import { ImageListSelectComponent } from './image-list-select/image-list-select.
     FormsModule,
     ReactiveFormsModule,
     ImageListSelectComponent,
+    AgeInputComponent,
+
     MatCardModule,
     MatListModule,
     MatFormFieldModule,
@@ -90,6 +93,8 @@ import { ImageListSelectComponent } from './image-list-select/image-list-select.
     DirectiveModule,
     
     HttpClientModule,
+
+
   ]
 })
 export class SharedModule { }
