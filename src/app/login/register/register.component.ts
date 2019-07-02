@@ -25,12 +25,16 @@ export class RegisterComponent implements OnInit {
       repeat: [""],
       // avatar: [img]
       avatar: [''],
-      dateOfBirthday: [""]
+      dateOfBirthday: ["1991-08-19"]
     })
+  }
+
+  onChange(ev) {
+    console.log(ev);
   }
   onSubmit({value, valid}, ev: Event) {
     ev.preventDefault();
     console.log(value, valid);
   }
-
+ 
 }

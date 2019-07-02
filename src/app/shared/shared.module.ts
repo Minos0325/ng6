@@ -21,6 +21,7 @@ import {
   MatNativeDateModule,
   MatSelectModule,
   MatSidenavModule,
+  MatButtonToggleModule,
 } from '@angular/material';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -58,6 +59,7 @@ import { AgeInputComponent } from './age-input/age-input.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatButtonToggleModule,
 
     DirectiveModule,
 
@@ -89,6 +91,7 @@ import { AgeInputComponent } from './age-input/age-input.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatButtonToggleModule,
 
     DirectiveModule,
     
