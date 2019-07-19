@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { QuoteService } from '../../services/quoteService';
 import { Quote } from 'src/app/domain';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   };
   constructor(
     private fb: FormBuilder,
-    private quoteService$: QuoteService
+    private quoteService$: QuoteService,
+    private http: HttpClient
   ) {
    this.quoteService$
    .getQuote()
@@ -57,5 +59,16 @@ export class LoginComponent implements OnInit {
       return null;
     }
     return {emailNotValid: 'The email must Start with minos'};
+  }
+
+  demoHTTP() {
+    console.log(123)
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+  });
+    this.http.post('http://172.16.0.109:8088/sm/enterprise/user/testFindCa',
+     JSON.stringify({username: 1}),
+     {headers: headers}
+    )
   }
 }
