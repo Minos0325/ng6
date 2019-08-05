@@ -71,13 +71,16 @@ export class AgeInputComponent implements ControlValueAccessor, OnInit, OnDestro
   ngOnInit(): void {
     // const initDate = format(subYears(Date.now(), 30), this.format);
     // const initAge = this.toAge(initDate);
+    
+    const initDate = format(subYears(Date.now(), 30));
+    const initAge = this.toAge(initDate);
     this.form= this.fb.group({
-      'birthday': ['', this.validateDate],
-      'age': this.fb.group({
-        // 'ageNum': [initAge.age],
-        // "ageUnit": [initAge.unit]
-        'ageNum': [],
-        "ageUnit": [AgeUnit.Year]
+      birthday: ['', this.validateDate],
+      age: this.fb.group({
+        ageNum: [initAge.age],
+        ageUnit: [initAge.unit]
+        // ageNum: [],
+        // ageUnit: [AgeUnit.Year]
       }, {validator: this.validateAge('ageNum', 'ageUnit')})
     });
     const brithday = this.form.get('birthday');
@@ -140,9 +143,9 @@ export class AgeInputComponent implements ControlValueAccessor, OnInit, OnDestro
     if(obj) {
       const date = format(obj, this.format);
       this.form.get('birthday').patchValue(date);
-      const age = this.toAge(date);
-      this.form.get('age').get('ageNum').patchValue(age.age);
-      this.form.get('age').get('agrUnit').patchValue(age.unit);
+      // const age = this.toAge(date);
+      // this.form.get('age').get('ageNum').patchValue(age.age);
+      // this.form.get('age').get('agrUnit').patchValue(age.unit);
     }
   }
   registerOnChange(fn: any): void {

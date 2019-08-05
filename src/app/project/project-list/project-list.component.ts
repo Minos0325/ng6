@@ -21,6 +21,7 @@ import { Subscription } from 'rxjs';
 export class ProjectListComponent implements OnInit, OnDestroy {
   projects: Project[]=[];
   sub: Subscription;
+  @HostBinding('@routerAnim') state;
   constructor(
     private dialog: MatDialog,
     private cd: ChangeDetectorRef,
@@ -43,7 +44,6 @@ export class ProjectListComponent implements OnInit, OnDestroy {
       this.sub.unsubscribe();
     }
   }
-  @HostBinding('@routerAnim') state;
   openNewProjectDialog() {
     const selectedImg = `/assets/img/covers/${Math.floor(Math.random()*40)}_tn.jpg`;
     const dialogRef = this.dialog.open(NewProjectComponent, {
@@ -67,7 +67,11 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   }
   
   launchInviteDialog(project) {
-    this.dialog.open(InviteComponent);
+    this.dialog.open(InviteComponent, 
+      {
+        data: {members: []}
+      }
+      );
     console.log(project);
   }
   launchUpdateDialog(project: Project) {
@@ -95,8 +99,8 @@ export class ProjectListComponent implements OnInit, OnDestroy {
       this.cd.markForCheck();
     });
   }
+
   launchConfirmDialog(project) {
-    
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
         title: '删除项目',
@@ -110,7 +114,6 @@ export class ProjectListComponent implements OnInit, OnDestroy {
       switchMap(_ => this.service$.del(project))
     )
     .subscribe(prj => {
-      const index = this.projects.map(p=> p.id).indexOf(prj.id);
       this.projects = this.projects.filter(p=> p.id !== prj.id);
       this.cd.markForCheck();
     });

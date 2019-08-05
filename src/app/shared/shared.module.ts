@@ -30,10 +30,16 @@ import { DirectiveModule } from '../directive/directive.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 import { AgeInputComponent } from './age-input/age-input.component';
-
+import { ChipsListComponent } from './chips-list/chips-list.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
-  declarations: [ConfirmDialogComponent, ImageListSelectComponent, AgeInputComponent],
+  declarations: [
+    ConfirmDialogComponent, 
+    ImageListSelectComponent, 
+    AgeInputComponent, 
+    ChipsListComponent
+  ],
   entryComponents: [ ConfirmDialogComponent ],
   imports: [
     CommonModule,
@@ -51,7 +57,6 @@ import { AgeInputComponent } from './age-input/age-input.component';
     MatSidenavModule,
     MatGridListModule,
     MatDialogModule,
-    MatAutocompleteModule,
     MatMenuModule,
     MatCheckboxModule,
     MatTooltipModule,
@@ -60,6 +65,8 @@ import { AgeInputComponent } from './age-input/age-input.component';
     MatNativeDateModule,
     MatSelectModule,
     MatButtonToggleModule,
+    MatChipsModule,
+    MatAutocompleteModule,
 
     DirectiveModule,
 
@@ -71,6 +78,7 @@ import { AgeInputComponent } from './age-input/age-input.component';
     ReactiveFormsModule,
     ImageListSelectComponent,
     AgeInputComponent,
+    ChipsListComponent,
 
     MatCardModule,
     MatListModule,
@@ -83,7 +91,6 @@ import { AgeInputComponent } from './age-input/age-input.component';
     MatSidenavModule,
     MatGridListModule,
     MatDialogModule,
-    MatAutocompleteModule,
     MatMenuModule,
     MatCheckboxModule,
     MatTooltipModule,
@@ -92,11 +99,13 @@ import { AgeInputComponent } from './age-input/age-input.component';
     MatNativeDateModule,
     MatSelectModule,
     MatButtonToggleModule,
+    MatChipsModule,
+    MatAutocompleteModule,
 
     DirectiveModule,
     
     HttpClientModule,
-
+    
 
   ]
 })

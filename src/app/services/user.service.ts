@@ -21,7 +21,7 @@ export class UserService {
         const params = new HttpParams().set('projectId',projectId);
         const uri = `${this.config.uri}/${this.domain}`;
         return this.http.get<User[]>(uri, {params});
-    }
+    } 
 
     addProjectRef(user: User, projectId: string):Observable<User> {
         const uri = `${this.config.uri}/${this.domain}/${user.id}`;
