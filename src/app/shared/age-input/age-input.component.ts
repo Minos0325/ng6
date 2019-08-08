@@ -167,10 +167,10 @@ export class AgeInputComponent implements ControlValueAccessor, OnInit, OnDestro
   }
   validateDate(c: FormControl):{[key: string]: any} {
     const val = c.value;
+    if(!val) return null;
     return isValidDate(val)? null : {
         birthdatyInvalid: true
       }
-    // {'ageInvalid': 'ageInvalid is true'}
   }
   validateAge(ageNumKey: string, ageUnitKey: string):(key: FormGroup)=>{[key: string]: any}{
     return (group: FormGroup):{[key: string]: any} => {

@@ -19,7 +19,7 @@ import {
   MatRadioModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatSelectModule,
+  // MatSelectModule,
   MatSidenavModule,
   MatButtonToggleModule,
 } from '@angular/material';
@@ -31,14 +31,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 import { AgeInputComponent } from './age-input/age-input.component';
 import { ChipsListComponent } from './chips-list/chips-list.component';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
+import { IdentityInputComponent } from './identity-input/identity-input.component';
+import { AreaListComponent } from './area-list/area-list.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
     ConfirmDialogComponent, 
     ImageListSelectComponent, 
     AgeInputComponent, 
-    ChipsListComponent
+    ChipsListComponent, 
+    IdentityInputComponent, 
+    AreaListComponent
   ],
   entryComponents: [ ConfirmDialogComponent ],
   imports: [
@@ -79,6 +84,8 @@ import {MatChipsModule} from '@angular/material/chips';
     ImageListSelectComponent,
     AgeInputComponent,
     ChipsListComponent,
+    IdentityInputComponent, 
+    AreaListComponent,
 
     MatCardModule,
     MatListModule,
