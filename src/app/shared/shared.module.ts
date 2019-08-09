@@ -22,6 +22,7 @@ import {
   // MatSelectModule,
   MatSidenavModule,
   MatButtonToggleModule,
+  MatTabsModule,
 } from '@angular/material';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -72,6 +73,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonToggleModule,
     MatChipsModule,
     MatAutocompleteModule,
+    MatTabsModule,
 
     DirectiveModule,
 
@@ -108,6 +110,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonToggleModule,
     MatChipsModule,
     MatAutocompleteModule,
+    MatTabsModule,
 
     DirectiveModule,
     
