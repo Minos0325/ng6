@@ -14,6 +14,9 @@ import { ServicesModule } from '../services/services.module';
 import { AppRoutingModule } from '../app.routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+import { AppStoreModule } from '../reducers';
+
 import 'hammerjs';
 
 // import '../utils/debug.utils';
@@ -30,6 +33,7 @@ import 'hammerjs';
     AppRoutingModule,
     BrowserAnimationsModule,
     ServicesModule.forRoot(),
+    AppStoreModule,
   ],
   exports: [
     HeaderComponent,
